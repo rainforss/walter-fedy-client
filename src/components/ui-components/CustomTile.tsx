@@ -37,7 +37,7 @@ const CustomTile: React.FunctionComponent<ICustomTileProps> = ({
         justify="space-between"
         border={`${walterFedyBlue} 2px solid`}
         borderRadius="10px"
-        my={6}
+        mt={4}
       >
         <Flex height="50px" bg={walterFedyBlue} align="center" px={4}>
           <Text

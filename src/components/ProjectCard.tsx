@@ -1,6 +1,6 @@
 import { IconButton } from "@chakra-ui/button";
 import { useDisclosure } from "@chakra-ui/hooks";
-import { Box, Center, Flex, Text } from "@chakra-ui/layout";
+import { Box, Flex, Text } from "@chakra-ui/layout";
 import * as React from "react";
 import { walterFedyBlue, walterFedyRed } from "../utils/constants";
 import { RiEditFill, RiSaveFill } from "react-icons/ri";
@@ -27,7 +27,7 @@ const ProjectCard: React.FunctionComponent<IProjectCardProps> = ({
       w="80%"
       border={`${walterFedyRed} 2px solid`}
       borderRadius="10px"
-      mx="auto"
+      ml={8}
       my={12}
     >
       <Flex
@@ -77,12 +77,12 @@ const ProjectCard: React.FunctionComponent<IProjectCardProps> = ({
         </Flex>
       </Flex>
       <Collapse in={isOpen}>
-        <Center flexDirection="column" py={8}>
+        <Flex flexDirection="column" pb={4} px={4}>
           <Budget />
           <Revenue />
           <Cash />
           <ProjectPerformance />
-        </Center>
+        </Flex>
       </Collapse>
     </Box>
   );
