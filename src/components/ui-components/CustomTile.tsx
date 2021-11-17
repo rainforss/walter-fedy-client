@@ -31,7 +31,7 @@ const CustomTile: React.FunctionComponent<ICustomTileProps> = ({
   return (
     <>
       <Flex
-        width="900px"
+        width={{ base: "100%", xl: "75%" }}
         minHeight="400px"
         direction="column"
         justify="space-between"
@@ -42,7 +42,7 @@ const CustomTile: React.FunctionComponent<ICustomTileProps> = ({
         <Flex height="50px" bg={walterFedyBlue} align="center" px={4}>
           <Text
             as="h3"
-            fontSize="1.5rem"
+            fontSize="1.2rem"
             fontWeight="bold"
             color="whiteAlpha.800"
             my="auto"
@@ -51,8 +51,15 @@ const CustomTile: React.FunctionComponent<ICustomTileProps> = ({
           </Text>
         </Flex>
 
-        <Flex align="center" mb={6}>
-          <Flex w="35%" flexDirection="column">
+        <Flex
+          align="center"
+          flexDirection={{ base: "column", xl: "row" }}
+          mb={6}
+        >
+          <Flex
+            w={{ base: "95%", md: "60%", xl: "40%" }}
+            flexDirection="column"
+          >
             {fields.map((f) => (
               <TextInput key={f.id} label={f.name} value={f.value} />
             ))}
@@ -61,7 +68,7 @@ const CustomTile: React.FunctionComponent<ICustomTileProps> = ({
           {chart && (
             <Center
               cursor="pointer"
-              w="65%"
+              w={{ base: "100%", xl: "60%" }}
               h="300px"
               flexGrow={2}
               onClick={() => onOpen()}

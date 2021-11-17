@@ -24,11 +24,13 @@ const ProjectCard: React.FunctionComponent<IProjectCardProps> = ({
   const { isOpen, onToggle } = useDisclosure();
   return (
     <Box
-      w={{ base: "100%", lg: "80%" }}
+      w={{ base: "100%", lg: "100%" }}
+      minW="400px"
       border={`${walterFedyRed} 2px solid`}
       borderRadius="10px"
-      ml={{ base: 0, lg: 8 }}
-      my={12}
+      mx={{ base: 0, lg: 2 }}
+      my={4}
+      bg="white"
     >
       <Flex
         height="60px"
@@ -39,11 +41,7 @@ const ProjectCard: React.FunctionComponent<IProjectCardProps> = ({
         borderBottom={isOpen ? `${walterFedyRed} 2px solid` : "none"}
         borderRadius={isOpen ? "5px 5px 0 0" : "5px"}
       >
-        <Flex
-          color="whiteAlpha.800"
-          fontSize={{ base: "0.7rem", lg: "1.7rem" }}
-          fontWeight="bold"
-        >
+        <Flex color="whiteAlpha.800" fontSize="1.3rem" fontWeight="bold">
           <Text as="span">{projectName}</Text>&nbsp;-&nbsp;
           <Text as="span">{projectNumber}</Text>
         </Flex>

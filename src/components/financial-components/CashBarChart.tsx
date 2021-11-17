@@ -15,7 +15,7 @@ const CashBarChart: React.FunctionComponent<ICashBarChartProps> = ({
     <Box height="100%" width="100%">
       <ResponsiveBar
         data={data}
-        margin={{ top: 20, right: 100, bottom: fullSize ? 100 : 40, left: 100 }}
+        margin={{ top: 20, right: 40, bottom: fullSize ? 100 : 40, left: 100 }}
         indexBy="dateRange"
         keys={["Cash Revenue"]}
         padding={0.3}
