@@ -24,10 +24,10 @@ const ProjectCard: React.FunctionComponent<IProjectCardProps> = ({
   const { isOpen, onToggle } = useDisclosure();
   return (
     <Box
-      w="80%"
+      w={{ base: "100%", lg: "80%" }}
       border={`${walterFedyRed} 2px solid`}
       borderRadius="10px"
-      ml={8}
+      ml={{ base: 0, lg: 8 }}
       my={12}
     >
       <Flex
@@ -37,8 +37,13 @@ const ProjectCard: React.FunctionComponent<IProjectCardProps> = ({
         align="center"
         justify="space-between"
         borderBottom={isOpen ? `${walterFedyRed} 2px solid` : "none"}
+        borderRadius={isOpen ? "5px 5px 0 0" : "5px"}
       >
-        <Flex color="whiteAlpha.800" fontSize="1.7rem" fontWeight="bold">
+        <Flex
+          color="whiteAlpha.800"
+          fontSize={{ base: "0.7rem", lg: "1.7rem" }}
+          fontWeight="bold"
+        >
           <Text as="span">{projectName}</Text>&nbsp;-&nbsp;
           <Text as="span">{projectNumber}</Text>
         </Flex>
@@ -49,6 +54,7 @@ const ProjectCard: React.FunctionComponent<IProjectCardProps> = ({
               color="whiteAlpha.800"
               variant="outline"
               icon={<RiEditFill />}
+              size="xs"
               mr={4}
               _hover={{ bg: walterFedyBlue }}
             />
@@ -57,6 +63,7 @@ const ProjectCard: React.FunctionComponent<IProjectCardProps> = ({
               color="whiteAlpha.800"
               variant="outline"
               icon={<RiSaveFill />}
+              size="xs"
               mr={4}
               _hover={{ bg: walterFedyBlue }}
             />
@@ -65,11 +72,19 @@ const ProjectCard: React.FunctionComponent<IProjectCardProps> = ({
               color="whiteAlpha.800"
               variant="outline"
               icon={isOpen ? <FaAngleUp /> : <FaAngleDown />}
+              size="xs"
               _hover={{ bg: walterFedyBlue }}
               onClick={onToggle}
             />
           </Flex>
-          <Flex align="center" bg="white" ml={5} px={4} borderRadius="5px">
+          <Flex
+            align="center"
+            bg="white"
+            ml={5}
+            px={{ base: 1, md: 4 }}
+            borderRadius="5px"
+            fontSize={{ base: "10px", md: "16px" }}
+          >
             <Icon as={FaDotCircle} mx={2} color="red" />
             <Icon as={FaDotCircle} mx={2} color="orange" />
             <Icon as={FaDotCircle} mx={2} color="green" />
