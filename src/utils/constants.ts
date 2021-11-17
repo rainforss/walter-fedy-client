@@ -1,11 +1,20 @@
 import { Datum } from "@nivo/bullet";
-import { BarData, PieData } from "./types";
+import { BarData, NavItem, PieData } from "./types";
+import { MdHome } from "react-icons/md";
+import { BsCardList } from "react-icons/bs";
+
+export const NAV_ITEMS: NavItem[] = [
+  { text: "Home", url: "/", icon: MdHome },
+  { text: "Project Card", url: "/projects", icon: BsCardList },
+];
 
 export const totalSales: string = "718K";
 
 export const walterFedyBlue = "#616283";
 
 export const walterFedyRed = "#D11E15";
+
+export const walterFedyDarkBlue = "#21242a";
 
 export const projects = [
   { projectName: "Test Project", projectNumber: "0001" },

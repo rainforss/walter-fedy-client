@@ -1,20 +1,16 @@
-import { InteractionType } from "@azure/msal-browser";
-import { MsalAuthenticationTemplate } from "@azure/msal-react";
 import { Box } from "@chakra-ui/layout";
 import * as React from "react";
 import ProjectCard from "../components/ProjectCard";
-import { loginRequest } from "../utils/authConfig";
+import { PageWrapper } from "../components/ui-components/PageWrapper";
 import { projects } from "../utils/constants";
 
-interface IMainProps {}
+interface IMainProps {
+  isSideBarOpen: boolean;
+}
 
-const Main: React.FunctionComponent<IMainProps> = (props) => {
-  const authRequest = { ...loginRequest };
+const Main: React.FunctionComponent<IMainProps> = ({ isSideBarOpen }) => {
   return (
-    <MsalAuthenticationTemplate
-      interactionType={InteractionType.Redirect}
-      authenticationRequest={authRequest}
-    >
+    <PageWrapper isSidebarOpen={isSideBarOpen}>
       <Box>
         {projects.map((p) => (
           <ProjectCard
@@ -24,7 +20,7 @@ const Main: React.FunctionComponent<IMainProps> = (props) => {
           />
         ))}
       </Box>
-    </MsalAuthenticationTemplate>
+    </PageWrapper>
   );
 };
 

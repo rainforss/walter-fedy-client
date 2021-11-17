@@ -1,15 +1,26 @@
-import React from "react";
-import {
-  Route,
-  Switch,
-  useHistory,
-  BrowserRouter as Router,
-} from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Route, Switch, useHistory } from "react-router-dom";
 import { ChakraProvider } from "@chakra-ui/react";
 import Main from "./pages/Main";
-import { IPublicClientApplication } from "@azure/msal-browser";
-import { MsalProvider } from "@azure/msal-react";
+import {
+  InteractionStatus,
+  InteractionType,
+  IPublicClientApplication,
+} from "@azure/msal-browser";
+import {
+  MsalAuthenticationTemplate,
+  MsalProvider,
+  useMsal,
+} from "@azure/msal-react";
 import { CustomNavigationClient } from "./utils/navigationClient";
+import { Layout } from "./components/Layout";
+import {
+  callMsGraph,
+  getMemberGroups,
+  getUserProfilePic,
+} from "./utils/msGraph";
+import { User, Group } from "@microsoft/microsoft-graph-types-beta";
+import { loginRequest } from "./utils/authConfig";
 
 interface IAppProps {
   pca: IPublicClientApplication;
@@ -19,63 +30,83 @@ function App({ pca }: IAppProps) {
   const history = useHistory();
   const navigationClient = new CustomNavigationClient(history);
   pca.setNavigationClient(navigationClient);
-
-  // useEffect(() => {
-  //   const fetchAPI = async (url: string) => {
-  //     const account = pca.getActiveAccount();
-
-  //     try {
-  //       if (!account) {
-  //         toast({
-  //           description:
-  //             "No active account! Verify a user has been signed in and setActiveAccount has been called.",
-  //           status: "error",
-  //         });
-  //         throw Error("No Active Account");
-  //       }
-  //       const tokenResponse = await pca.acquireTokenSilent({
-  //         ...loginRequest,
-  //         account,
-  //       });
-  //       console.log(tokenResponse);
-  //       await fetch(url, {
-  //         headers: { "Content-Type": "application/json" },
-  //         method: "POST",
-  //         body: JSON.stringify({ accessToken: tokenResponse.accessToken }),
-  //       });
-  //     } catch (error: any) {
-  //       if (error.message === "No Active Account" && !account) {
-  //         return pca.acquireTokenRedirect({ ...loginRequest });
-  //       }
-  //       if (error instanceof InteractionRequiredAuthError) {
-  //         return pca.acquireTokenPopup({
-  //           ...loginRequest,
-  //           account: account || undefined,
-  //         });
-  //       }
-  //     }
-  //   };
-  //   fetchAPI("localhost:5000/accessToken");
-  // }, [pca, toast]);
+  const authRequest = { ...loginRequest };
 
   return (
-    <Router>
-      <MsalProvider instance={pca}>
-        <ChakraProvider resetCSS>
+    <MsalProvider instance={pca}>
+      <ChakraProvider resetCSS>
+        <MsalAuthenticationTemplate
+          interactionType={InteractionType.Redirect}
+          authenticationRequest={authRequest}
+        >
           <Pages />
-        </ChakraProvider>
-      </MsalProvider>
-    </Router>
+        </MsalAuthenticationTemplate>
+      </ChakraProvider>
+    </MsalProvider>
   );
 }
 
 function Pages() {
+  const { inProgress } = useMsal();
+  const [graphData, setGraphData] = useState<User>();
+  const [groupData, setGroupData] = useState<undefined | Group[]>(undefined);
+  const [imageData, setImageData] = useState<undefined | string>(undefined);
+  const [isOpen, setIsOpen] = useState(true);
+  const onOpen = () => {
+    setIsOpen(true);
+  };
+  const onClose = () => {
+    setIsOpen(false);
+  };
+  const onToggle = () => {
+    setIsOpen(!isOpen);
+  };
+
+  useEffect(() => {
+    if (!graphData && inProgress === InteractionStatus.None) {
+      callMsGraph()
+        .then((res) => setGraphData(res))
+        .catch((err) => console.log(err));
+    }
+  }, [inProgress, graphData]);
+  useEffect(() => {
+    if (!groupData && inProgress === InteractionStatus.None) {
+      getMemberGroups()
+        .then((res) => {
+          setGroupData(res);
+        })
+        .catch((err) => console.log(err));
+    }
+  }, [inProgress, groupData]);
+  useEffect(() => {
+    if (!imageData && inProgress === InteractionStatus.None) {
+      getUserProfilePic()
+        .then((res) => {
+          setImageData(res);
+        })
+        .catch((err) => console.log(err));
+    }
+  }, [inProgress, imageData]);
+
+  console.log(graphData);
+
   return (
-    <Switch>
-      <Route path="/">
-        <Main />
-      </Route>
-    </Switch>
+    <>
+      <Layout
+        AADUser={graphData}
+        groupData={groupData}
+        imageData={imageData}
+        isOpen={isOpen}
+        onOpen={onOpen}
+        onClose={onClose}
+        onToggle={onToggle}
+      />
+      <Switch>
+        <Route path="/">
+          <Main isSideBarOpen={isOpen} />
+        </Route>
+      </Switch>
+    </>
   );
 }
 
