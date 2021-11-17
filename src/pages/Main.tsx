@@ -1,10 +1,7 @@
-import { InteractionType } from "@azure/msal-browser";
-import { MsalAuthenticationTemplate } from "@azure/msal-react";
 import { Box } from "@chakra-ui/layout";
 import * as React from "react";
 import ProjectCard from "../components/ProjectCard";
 import { PageWrapper } from "../components/ui-components/PageWrapper";
-import { loginRequest } from "../utils/authConfig";
 import { projects } from "../utils/constants";
 
 interface IMainProps {

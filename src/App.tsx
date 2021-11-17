@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Route, Switch, useHistory } from "react-router-dom";
-import { Box, ChakraProvider } from "@chakra-ui/react";
+import { ChakraProvider } from "@chakra-ui/react";
 import Main from "./pages/Main";
 import {
   InteractionStatus,
@@ -47,7 +47,7 @@ function App({ pca }: IAppProps) {
 }
 
 function Pages() {
-  const { instance, inProgress } = useMsal();
+  const { inProgress } = useMsal();
   const [graphData, setGraphData] = useState<User>();
   const [groupData, setGroupData] = useState<undefined | Group[]>(undefined);
   const [imageData, setImageData] = useState<undefined | string>(undefined);
