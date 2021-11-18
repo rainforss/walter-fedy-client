@@ -1,11 +1,12 @@
 import Icon from "@chakra-ui/icon";
 import { Flex } from "@chakra-ui/layout";
+import { ChakraProps } from "@chakra-ui/system";
 import { Tooltip } from "@chakra-ui/tooltip";
 import * as React from "react";
 import { FaDotCircle } from "react-icons/fa";
 import { Indicator } from "../../utils/types";
 
-interface IStatusIndicatorProps {
+interface IStatusIndicatorProps extends ChakraProps {
   indicators: Indicator[];
   status?: "red" | "orange" | "green";
 }
@@ -13,9 +14,10 @@ interface IStatusIndicatorProps {
 const StatusIndicator: React.FunctionComponent<IStatusIndicatorProps> = ({
   indicators,
   status,
+  ...chakraProps
 }) => {
   return (
-    <Flex w="100%" justify="center" minWidth="100px">
+    <Flex w="100%" minWidth="100px" {...chakraProps}>
       {indicators.map((i) => (
         <Tooltip
           hasArrow
