@@ -11,9 +11,10 @@ import ProjectPerformance from "./financial-components/ProjectPerformance";
 import Revenue from "./financial-components/Revenue";
 import { Collapse } from "@chakra-ui/transition";
 import { Tooltip } from "@chakra-ui/react";
-import ClientInformation from "./project-componets/ClientInformation";
-import WfTeam from "./project-componets/WfTeam";
+import ClientInformation from "./project-components/ClientInformation";
+import WfTeam from "./project-components/WfTeam";
 import ProjectNotes from "./note-components/ProjectNotes";
+import QualityInformation from "./project-components/QualityInformation";
 import Risks from "./note-components/Risks";
 import Lessons from "./note-components/Lessons";
 import { CheckCircleIcon, InfoIcon, WarningIcon } from "@chakra-ui/icons";
@@ -579,6 +580,21 @@ const ProjectCard: React.FunctionComponent<IProjectCardProps> = ({
               </Tr>
             </Tbody>
           </Table> */}
+        </Flex>
+        <Flex
+          flexDirection={{ base: "column", lg: "row" }}
+          justify="flex-start"
+          pb={4}
+          px={4}
+          width="100%"
+        >
+          <Flex
+            flexDirection="column"
+            pb={4}
+            width={{ base: "100%", lg: "100%" }}
+          >
+            <QualityInformation />
+          </Flex>
         </Flex>
       </Collapse>
     </Box>

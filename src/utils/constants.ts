@@ -2,6 +2,7 @@ import { Datum } from "@nivo/bullet";
 import {
   BarData,
   Indicator,
+  Issue,
   LessonLearned,
   NavItem,
   PieData,
@@ -39,6 +40,30 @@ export const threeIndicators: Indicator[] = [
     status: "Good",
     color: "green",
     description: "Very good",
+  },
+];
+
+export const issues: Issue[] = [
+  {
+    status: "Active",
+    name: "Someone tripping",
+    insurerInvolved: false,
+    insurance: "",
+    probabilityOfClaim: "Low",
+  },
+  {
+    status: "Resolved",
+    name: "Pipe leaks",
+    insurerInvolved: true,
+    insurance: "3000",
+    probabilityOfClaim: "Medium",
+  },
+  {
+    status: "Resolved",
+    name: "Trench collapses",
+    insurerInvolved: true,
+    insurance: "30000",
+    probabilityOfClaim: "High",
   },
 ];
 
