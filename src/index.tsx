@@ -9,6 +9,8 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { msalConfig } from "./utils/authConfig";
+import { BrowserRouter as Router } from "react-router-dom";
+import "./index.css";
 
 export const msalInstance = new PublicClientApplication(msalConfig);
 
@@ -27,9 +29,9 @@ msalInstance.addEventCallback((event: EventMessage) => {
 });
 
 ReactDOM.render(
-  <React.StrictMode>
+  <Router>
     <App pca={msalInstance} />
-  </React.StrictMode>,
+  </Router>,
   document.getElementById("root")
 );
 

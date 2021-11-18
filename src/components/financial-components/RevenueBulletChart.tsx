@@ -12,11 +12,16 @@ const RevenueBulletChart: React.FunctionComponent<IRevenueBulletChartProps> = ({
   fullSize,
 }) => {
   return (
-    <Box height="200px" width="100%">
+    <Box height="300px" width={fullSize ? "100%" : "50%"}>
       <ResponsiveBullet
         data={data}
-        margin={{ top: 50, right: 40, bottom: 50, left: 90 }}
+        margin={
+          fullSize
+            ? { top: 50, right: 140, bottom: 50, left: 140 }
+            : { top: 20, right: 40, bottom: 20, left: 40 }
+        }
         spacing={60}
+        layout={fullSize ? "horizontal" : "vertical"}
         titleAlign="start"
         titleOffsetX={-60}
         measureSize={0.3}

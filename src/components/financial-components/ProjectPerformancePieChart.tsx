@@ -1,4 +1,5 @@
 import { Box } from "@chakra-ui/layout";
+import { useMediaQuery } from "@chakra-ui/media-query";
 import { DefaultRawDatum, ResponsivePie } from "@nivo/pie";
 import * as React from "react";
 
@@ -35,19 +36,21 @@ const CenteredMetric = ({
 
 const ProjectPerformancePieChart: React.FunctionComponent<IProjectPerformancePieChartProps> =
   ({ data, fullSize }) => {
+    const [isLargerThan480] = useMediaQuery("(min-width: 480px)");
     return (
       <Box height="100%" width="100%">
         <ResponsivePie
           data={data}
           margin={{
-            top: 20,
-            right: 150,
-            bottom: fullSize ? 100 : 40,
-            left: 150,
+            top: 40,
+            right: fullSize && isLargerThan480 ? 150 : 30,
+            bottom: fullSize && isLargerThan480 ? 100 : 40,
+            left: fullSize && isLargerThan480 ? 150 : 30,
           }}
           innerRadius={0.65}
           cornerRadius={3}
           padAngle={0.7}
+          enableArcLinkLabels={!!(fullSize && isLargerThan480)}
           valueFormat={(value) => `$${Math.floor(value / 1000)}K`}
           activeOuterRadiusOffset={8}
           layers={[
