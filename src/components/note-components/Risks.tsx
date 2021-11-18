@@ -18,9 +18,15 @@ const Risk: React.FunctionComponent<IRiskProps> = (props) => {
         </TabList>
         <TabPanels>
           {risks.map((r) => (
-            <TabPanel key={r.issue} height="110px" overflowY="scroll">
+            <TabPanel
+              key={r.issue}
+              height="110px"
+              overflowY="scroll"
+              fontSize="0.7rem"
+            >
               <p>
-                {r.issue}, mitigation: {r.mitigation}, solved by: {r.solvedBy}
+                Issue: {r.issue}, mitigation: {r.mitigation}, solved by:{" "}
+                {r.solvedBy}
               </p>
             </TabPanel>
           ))}

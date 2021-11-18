@@ -18,7 +18,12 @@ const ProjectNotes: React.FunctionComponent<IProjectNotesProps> = (props) => {
         </TabList>
         <TabPanels py={4}>
           {projectNotes.map((n) => (
-            <TabPanel key={n.body} height="110px" overflowY="scroll">
+            <TabPanel
+              key={n.body}
+              height="110px"
+              overflowY="scroll"
+              fontSize="0.7rem"
+            >
               <p>{n.body}</p>
             </TabPanel>
           ))}

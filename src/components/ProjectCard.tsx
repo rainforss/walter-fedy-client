@@ -100,7 +100,7 @@ const ProjectCard: React.FunctionComponent<IProjectCardProps> = ({
       </Flex>
       <Collapse in={isOpen}>
         <Flex
-          flexDirection={{ base: "column", xl: "row" }}
+          flexDirection={{ base: "column", lg: "row" }}
           justify="flex-start"
           pb={4}
           px={4}
@@ -109,7 +109,7 @@ const ProjectCard: React.FunctionComponent<IProjectCardProps> = ({
           <Flex
             flexDirection="column"
             pb={4}
-            width={{ base: "100%", lg: "35%" }}
+            width={{ base: "100%", lg: "34%" }}
           >
             <ClientInformation />
             <WfTeam />
@@ -117,6 +117,7 @@ const ProjectCard: React.FunctionComponent<IProjectCardProps> = ({
           <Flex
             flexDirection="column"
             pb={4}
+            mx="1%"
             width={{ base: "100%", lg: "40%" }}
           >
             <Budget />
@@ -127,7 +128,7 @@ const ProjectCard: React.FunctionComponent<IProjectCardProps> = ({
           <Flex
             flexDirection="column"
             pb={4}
-            width={{ base: "100%", lg: "25%" }}
+            width={{ base: "100%", lg: "24%" }}
           >
             <ProjectNotes />
             <Risks />
