@@ -17,9 +17,11 @@ interface SidebarProps {
   groupData?: Group[] | undefined;
   imageData?: string;
   isOpen: boolean;
+  isHidden: boolean;
   onOpen: () => void;
   onClose: () => void;
   onToggle: () => void;
+  toggleHidden: () => void;
   children?:
     | ((args: SidebarChildrenProps) => ReactElement)
     | string
@@ -32,21 +34,30 @@ export const Sidebar: React.FC<SidebarProps> = ({
   groupData,
   imageData,
   isOpen,
+  isHidden,
   onOpen,
   onClose,
   onToggle,
+  toggleHidden,
 }) => {
   return (
     <Box
       position="fixed"
       top="0"
       h="100vh"
-      w={isOpen ? "250px" : "60px"}
-      bg={walterFedyBlue}
+      w={isOpen ? "250px" : isHidden ? "0px" : "60px"}
+      bg={isHidden ? "transparent" : walterFedyBlue}
       transition="all 0.2s ease-in-out"
       overflowX="hidden"
+      opacity={isHidden ? 0 : 1}
+      onTouchStart={(e: any) => {
+        console.log(e.target, e.currentTarget);
+        if (!isOpen && e.target.id === "sidebar") {
+          toggleHidden();
+        }
+      }}
     >
-      <Box h="100%" w="100%" position="relative">
+      <Box id="sidebar" h="100%" w="100%" position="relative">
         {children &&
           typeof children === "function" &&
           children({ isOpen, onClose, onOpen, onToggle })}

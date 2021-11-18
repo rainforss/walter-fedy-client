@@ -4,7 +4,7 @@ import {
   projectPerformanceFields,
 } from "../../utils/constants";
 import ProjectPerformancePieChart from "./ProjectPerformancePieChart";
-import CustomTile from "../ui-components/CustomTile";
+import CustomTile from "../ui-components/CustomTileWithChart";
 
 interface IProjectPerformanceProps {}
 
@@ -19,6 +19,7 @@ const ProjectPerformance: React.FunctionComponent<IProjectPerformanceProps> = (
       fullSizeChart={
         <ProjectPerformancePieChart data={projectPerformanceData} fullSize />
       }
+      status="green"
     />
   );
 };

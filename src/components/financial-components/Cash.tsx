@@ -1,7 +1,7 @@
 import * as React from "react";
 import { cashData, cashFields } from "../../utils/constants";
 import CashBarChart from "../financial-components/CashBarChart";
-import CustomTile from "../ui-components/CustomTile";
+import CustomTile from "../ui-components/CustomTileWithChart";
 
 interface ICashProps {}
 
@@ -12,6 +12,7 @@ const Cash: React.FunctionComponent<ICashProps> = (props) => {
       fields={cashFields}
       chart={<CashBarChart data={cashData} />}
       fullSizeChart={<CashBarChart data={cashData} fullSize />}
+      status="red"
     />
   );
 };

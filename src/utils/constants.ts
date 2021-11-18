@@ -1,5 +1,13 @@
 import { Datum } from "@nivo/bullet";
-import { BarData, NavItem, PieData } from "./types";
+import {
+  BarData,
+  Indicator,
+  LessonLearned,
+  NavItem,
+  PieData,
+  ProjectNote,
+  Risk,
+} from "./types";
 import { MdHome } from "react-icons/md";
 import { BsCardList } from "react-icons/bs";
 
@@ -16,11 +24,121 @@ export const walterFedyRed = "#D11E15";
 
 export const walterFedyDarkBlue = "#21242a";
 
+export const threeIndicators: Indicator[] = [
+  {
+    status: "Bad",
+    color: "red",
+    description: "Very dangerous",
+  },
+  {
+    status: "Neutral",
+    color: "orange",
+    description: "Nothing serious",
+  },
+  {
+    status: "Good",
+    color: "green",
+    description: "Very good",
+  },
+];
+
 export const projects = [
   { projectName: "Test Project", projectNumber: "0001" },
   { projectName: "Test Project", projectNumber: "0002" },
   { projectName: "Test Project", projectNumber: "0003" },
   { projectName: "Test Project", projectNumber: "0004" },
+];
+
+export const lessonsLearned: LessonLearned[] = [
+  {
+    topic: "How to prevent leaks",
+    createdBy: "Luke Demeter",
+    link: "https://walterfedy.com",
+  },
+  {
+    topic: "How to drive a Lambo",
+    createdBy: "Luke Demeter",
+    link: "https://walterfedy.com",
+  },
+  {
+    topic: "How to refund a Tesla",
+    createdBy: "Luke Demeter",
+    link: "https://walterfedy.com",
+  },
+];
+
+export const risks: Risk[] = [
+  {
+    risk: "Leak",
+    date: new Date(),
+    issue: "Deadly gas leak",
+    mitigation: "Plug and play",
+    solvedBy: "Luke Demeter",
+  },
+  {
+    risk: "Noise",
+    date: new Date(),
+    issue: "Loud V12 engine noise",
+    mitigation: "Drive the Lambo home",
+    solvedBy: "Luke Demeter",
+  },
+  {
+    risk: "Electricity",
+    date: new Date(),
+    issue: "Tesla motor electrical failure",
+    mitigation: "Complete refund",
+    solvedBy: "Luke Demeter",
+  },
+];
+
+export const projectNotes: ProjectNote[] = [
+  {
+    createdBy: "Luke Demeter",
+    date: new Date(),
+    body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+  },
+  {
+    createdBy: "Luke Demeter",
+    date: new Date(),
+    body: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+  },
+  {
+    createdBy: "Luke Demeter",
+    date: new Date(),
+    body: "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+  },
+  {
+    createdBy: "Luke Demeter",
+    date: new Date(),
+    body: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+  },
+];
+
+export const wfTeamFields = [
+  {
+    id: "pm",
+    name: "PM",
+    value: "Luke Demeter",
+    type: "text",
+  },
+  {
+    id: "designteam",
+    name: "Design Team",
+    value: "Luke Demeter",
+    type: "select",
+  },
+  {
+    id: "cafrteam",
+    name: "CAFR Team",
+    value: "Luke Demeter",
+    type: "select",
+  },
+  {
+    id: "qualityteam",
+    name: "Quality Team",
+    value: "Luke Demeter",
+    type: "select",
+  },
 ];
 
 export const projectPerformanceFields = [

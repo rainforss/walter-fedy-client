@@ -6,14 +6,24 @@ import { parsePageTitle } from "../utils/parsePageTitle";
 
 interface HeaderProps {
   isSidebarOpen: boolean;
+  isSidebarHidden: boolean;
 }
 
-export const Header: React.FC<HeaderProps> = ({ isSidebarOpen }) => {
+export const Header: React.FC<HeaderProps> = ({
+  isSidebarOpen,
+  isSidebarHidden,
+}) => {
   const location = useLocation();
 
   return (
     <Flex
-      w={isSidebarOpen ? "calc(100% - 250px)" : "calc(100% - 60px)"}
+      w={
+        isSidebarOpen
+          ? "calc(100% - 250px)"
+          : isSidebarHidden
+          ? "100%"
+          : "calc(100% - 60px)"
+      }
       justify="space-between"
       align="center"
       px={8}
@@ -21,7 +31,7 @@ export const Header: React.FC<HeaderProps> = ({ isSidebarOpen }) => {
       zIndex="2"
       top="0"
       borderBottom="3px solid #E2E8F0"
-      left={isSidebarOpen ? "250px" : "60px"}
+      left={isSidebarOpen ? "250px" : isSidebarHidden ? "0px" : "60px"}
       bg="white"
       transition="all 0.2s ease-in-out"
       h="10vh"

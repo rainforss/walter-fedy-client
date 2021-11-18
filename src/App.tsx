@@ -51,7 +51,8 @@ function Pages() {
   const [graphData, setGraphData] = useState<User>();
   const [groupData, setGroupData] = useState<undefined | Group[]>(undefined);
   const [imageData, setImageData] = useState<undefined | string>(undefined);
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
+  const [isHidden, setIsHidden] = useState(false);
   const onOpen = () => {
     setIsOpen(true);
   };
@@ -60,6 +61,9 @@ function Pages() {
   };
   const onToggle = () => {
     setIsOpen(!isOpen);
+  };
+  const toggleHidden = () => {
+    setIsHidden((prevState) => !prevState);
   };
 
   useEffect(() => {
@@ -97,13 +101,15 @@ function Pages() {
         groupData={groupData}
         imageData={imageData}
         isOpen={isOpen}
+        isHidden={isHidden}
         onOpen={onOpen}
         onClose={onClose}
         onToggle={onToggle}
+        toggleHidden={toggleHidden}
       />
       <Switch>
         <Route path="/">
-          <Main isSideBarOpen={isOpen} />
+          <Main isSideBarOpen={isOpen} isSideBarHidden={isHidden} />
         </Route>
       </Switch>
     </>

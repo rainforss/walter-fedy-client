@@ -6,11 +6,18 @@ import { projects } from "../utils/constants";
 
 interface IMainProps {
   isSideBarOpen: boolean;
+  isSideBarHidden: boolean;
 }
 
-const Main: React.FunctionComponent<IMainProps> = ({ isSideBarOpen }) => {
+const Main: React.FunctionComponent<IMainProps> = ({
+  isSideBarOpen,
+  isSideBarHidden,
+}) => {
   return (
-    <PageWrapper isSidebarOpen={isSideBarOpen}>
+    <PageWrapper
+      isSidebarOpen={isSideBarOpen}
+      isSidebarHidden={isSideBarHidden}
+    >
       <Box>
         {projects.map((p) => (
           <ProjectCard
