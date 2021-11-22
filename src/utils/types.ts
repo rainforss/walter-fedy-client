@@ -39,3 +39,11 @@ export type LessonLearned = {
   topic: string;
   link: string;
 };
+
+export type Issue = {
+  name: string;
+  status: "Active" | "Resolved";
+  insurerInvolved: boolean;
+  insurance: string;
+  probabilityOfClaim: "Low" | "Medium" | "High";
+};
