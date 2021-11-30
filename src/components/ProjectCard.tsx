@@ -143,9 +143,6 @@ const ProjectCard: React.FunctionComponent<IProjectCardProps> = ({
             <Risks />
             <Lessons />
           </Flex>
-          {
-
-          }
         </Flex>
         <Flex
           flexDirection={{ base: "column", lg: "row" }}

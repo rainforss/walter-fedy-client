@@ -19,7 +19,9 @@ const LocationInformation :  React.FunctionComponent<ILocationInformationProps> 
                 defaultZoom={8}
                 defaultCenter={{ lat: -34.397, lng: 150.644 }}
               >
-                {true && <Marker position={{ lat: -34.397, lng: 150.644 }} />}
+                {
+                  true && <Marker position={{ lat: -34.397, lng: 150.644 }} />
+                }
               </GoogleMap>
             </Td>
           </Tr>
