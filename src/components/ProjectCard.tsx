@@ -12,7 +12,7 @@ import Revenue from "./financial-components/Revenue";
 import { Collapse } from "@chakra-ui/transition";
 import { Tooltip } from "@chakra-ui/react";
 import ClientInformation from "./project-components/ClientInformation";
-import LocationInformationWrappedWithScriptjs from "./project-components/LocationInformationWrappedWithScriptjs";
+import LocationInformation from "./project-components/LocationInformation";
 import WfTeam from "./project-components/WfTeam";
 import ProjectNotes from "./note-components/ProjectNotes";
 import QualityInformation from "./project-components/QualityInformation";
@@ -114,11 +114,11 @@ const ProjectCard: React.FunctionComponent<IProjectCardProps> = ({
             width={{ base: "100%", lg: "34%" }}
           >
             <ClientInformation />
-            <LocationInformationWrappedWithScriptjs 
-              containerElement={<div style={{ height: `400px` }} />} 
-              mapElement={<div style={{ height: `100%` }} />} 
-              googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places" 
-              loadingElement={<div style={{ height: `100%` }} />} 
+            <LocationInformation
+              containerElement={<div style={{ height: `400px` }} />}
+              mapElement={<div style={{ height: `100%` }} />}
+              googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
+              loadingElement={<div style={{ height: `100%` }} />}
             />
             <WfTeam />
             <ProjectPerformance />
