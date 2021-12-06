@@ -14,7 +14,7 @@ import { Tooltip } from "@chakra-ui/react";
 import ClientInformation from "./project-components/ClientInformation";
 import LocationInformation from "./project-components/LocationInformation";
 import WfTeam from "./project-components/WfTeam";
-import ProjectForcastInformation from "./project-components/ProjectForcastInformation";
+import ProjectForecastInformation from "./project-components/ProjectForecastInformation";
 import ProjectNotes from "./note-components/ProjectNotes";
 import QualityInformation from "./project-components/QualityInformation";
 import Risks from "./note-components/Risks";
@@ -122,7 +122,7 @@ const ProjectCard: React.FunctionComponent<IProjectCardProps> = ({
               loadingElement={<div style={{ height: `100%` }} />}
             />
             <WfTeam />
-            <ProjectForcastInformation />
+            <ProjectForecastInformation />
           </Flex>
           <Flex
             flexDirection="column"
