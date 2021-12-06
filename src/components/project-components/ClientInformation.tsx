@@ -1,8 +1,8 @@
-import { Table, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/react";
 import * as React from "react";
-import { threeIndicators } from "../../utils/constants";
 import CustomTileWithoutChart from "../ui-components/CustomTileWithoutChart";
+import { Table, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/react";
 import StatusIndicator from "../ui-components/StatusIndicator";
+import { threeIndicators } from "../../utils/constants";
 
 interface IClientInformationProps {}
 
