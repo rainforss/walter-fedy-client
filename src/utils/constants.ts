@@ -7,7 +7,7 @@ import {
   NavItem,
   PieData,
   ProjectNote,
-  Risk,
+  Risk
 } from "./types";
 import { MdHome } from "react-icons/md";
 import { BsCardList } from "react-icons/bs";
@@ -309,3 +309,24 @@ export const projectPerformanceData: PieData[] = [
     color: "hsl(4, 70%, 50%)",
   },
 ];
+
+export const plotData: any = [
+  {
+    x: [1, 2, 3, 4, 5, 6, 7, 8, 9],
+    y: [0, 50, 100, 125, 200, 222, 250, 370],
+    fill: 'tozeroy',
+    type: 'scatter',
+    name: 'Project 1'
+  },
+  {
+    x: [1, 2, 3, 4, 5, 6, 7, 8, 9],
+    y: [3, 150, 200, 275, 300, 325, 330, 340],
+    fill: 'tonexty',
+    type: 'scatter',
+    name: 'Project 2'
+  }
+];
+
+export const latitudeData = 43.651070;
+
+export const longitudeData = -79.347015;

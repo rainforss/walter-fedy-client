@@ -7,6 +7,7 @@ import {
   withScriptjs,
 } from "react-google-maps";
 import CustomTileWithoutChart from "../ui-components/CustomTileWithoutChart";
+import { latitudeData, longitudeData } from "../../utils/constants";
 
 interface ILocationInformationProps {}
 
@@ -26,9 +27,9 @@ const LocationInformation: React.FunctionComponent<ILocationInformationProps> =
               <Td p={2}>
                 <GoogleMap
                   defaultZoom={8}
-                  defaultCenter={{ lat: 43.651070, lng: -79.347015 }}
+                  defaultCenter={{ lat: latitudeData, lng: longitudeData }}
                 >
-                  {true && <Marker position={{ lat: 43.651070, lng: -79.347015 }} />}
+                  {true && <Marker position={{ lat: latitudeData, lng: longitudeData }} />}
                 </GoogleMap>
               </Td>
             </Tr>
