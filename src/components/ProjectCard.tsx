@@ -2,7 +2,7 @@ import { IconButton } from "@chakra-ui/button";
 import { useDisclosure } from "@chakra-ui/hooks";
 import { Box, Flex, Text } from "@chakra-ui/layout";
 import * as React from "react";
-import { walterFedyBlue, walterFedyRed } from "../utils/constants";
+import { walterFedyBlue, walterFedyRed, googleMapSourceData } from "../utils/constants";
 import { RiEditFill, RiSaveFill } from "react-icons/ri";
 import { FaAngleDown, FaAngleUp } from "react-icons/fa";
 import Budget from "./financial-components/Budget";
@@ -118,7 +118,7 @@ const ProjectCard: React.FunctionComponent<IProjectCardProps> = ({
             <LocationInformation
               containerElement={<div style={{ height: `400px` }} />}
               mapElement={<div style={{ height: `100%` }} />}
-              googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
+              googleMapURL={googleMapSourceData}
               loadingElement={<div style={{ height: `100%` }} />}
             />
             <WfTeam />

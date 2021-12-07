@@ -11,6 +11,7 @@ import {
 } from "./types";
 import { MdHome } from "react-icons/md";
 import { BsCardList } from "react-icons/bs";
+import { format } from 'react-string-format';
 
 export const NAV_ITEMS: NavItem[] = [
   { text: "Home", url: "/", icon: MdHome },
@@ -330,3 +331,10 @@ export const plotData: any = [
 export const latitudeData = 43.651070;
 
 export const longitudeData = -79.347015;
+
+// Ensure not to commit with Google Map API key
+export const googleMapApiKey = "";
+//export const googleMapSourceData = format("https://maps.googleapis.com/maps/api/js?key={0}&callback=initMap", googleMapApiKey) ;
+
+// Below is for testing without a google map api key
+export const googleMapSourceData = "https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places";
