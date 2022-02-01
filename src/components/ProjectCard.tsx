@@ -19,14 +19,14 @@ import QualityInformation from "./project-components/QualityInformation";
 import Risks from "./note-components/Risks";
 import Lessons from "./note-components/Lessons";
 import { CheckCircleIcon, InfoIcon, WarningIcon } from "@chakra-ui/icons";
+import { useProject } from "../hooks/useProject";
+import CustomTileWithoutChart from "./ui-components/CustomTileWithoutChart";
 interface IProjectCardProps {
-  projectName: string;
-  projectNumber: string;
+  project: any;
 }
 
 const ProjectCard: React.FunctionComponent<IProjectCardProps> = ({
-  projectName,
-  projectNumber,
+  project,
 }) => {
   const { isOpen, onToggle } = useDisclosure();
   return (
@@ -47,8 +47,8 @@ const ProjectCard: React.FunctionComponent<IProjectCardProps> = ({
         borderBottom={isOpen ? `${walterFedyRed} 2px solid` : "none"}
       >
         <Flex color={walterFedyRed} fontSize="1rem" fontWeight="bold">
-          <Text as="span">{projectName}</Text>&nbsp;-&nbsp;
-          <Text as="span">{projectNumber}</Text>
+          <Text as="span">{project.name}</Text>&nbsp;-&nbsp;
+          <Text as="span">{project.projectNumber}</Text>
         </Flex>
         <Flex>
           <Flex>
@@ -114,12 +114,7 @@ const ProjectCard: React.FunctionComponent<IProjectCardProps> = ({
             width={{ base: "100%", lg: "34%" }}
           >
             <ClientInformation />
-            <LocationInformation
-              containerElement={<div style={{ height: `400px` }} />}
-              mapElement={<div style={{ height: `100%` }} />}
-              googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
-              loadingElement={<div style={{ height: `100%` }} />}
-            />
+            <LocationInformation />
             <WfTeam />
             <ProjectPerformance />
           </Flex>

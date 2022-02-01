@@ -1,47 +1,33 @@
-import { Table, Tbody, Td, Tr } from "@chakra-ui/react";
+import { Box, Table, Tbody, Td, Tr } from "@chakra-ui/react";
 import * as React from "react";
-import {
-  GoogleMap,
-  Marker,
-  withGoogleMap,
-  withScriptjs,
-} from "react-google-maps";
+import GoogleMapReact from "google-map-react";
 import CustomTileWithoutChart from "../ui-components/CustomTileWithoutChart";
+import { TriangleDownIcon } from "@chakra-ui/icons";
 
 interface ILocationInformationProps {}
 
-const LocationInformation: React.FunctionComponent<ILocationInformationProps> =
-  () => {
-    return (
-      <CustomTileWithoutChart title="Location">
-        <Table
-          variant="striped"
-          colorScheme="teal"
-          width="95%"
-          mx="auto"
-          my={4}
+const LocationInformation: React.FunctionComponent<
+  ILocationInformationProps
+> = () => {
+  return (
+    <CustomTileWithoutChart title="Location">
+      <Box height="400px">
+        <GoogleMapReact
+          bootstrapURLKeys={{ key: "AIzaSyBd4vn5nmYUTEaoT_15iXlSzryic5gZWlg" }}
+          defaultZoom={8}
+          defaultCenter={{ lat: -34.397, lng: 150.644 }}
         >
-          <Tbody fontSize="0.75rem">
-            <Tr>
-              <Td p={2}>
-                <GoogleMap
-                  defaultZoom={8}
-                  defaultCenter={{ lat: -34.397, lng: 150.644 }}
-                >
-                  {true && <Marker position={{ lat: -34.397, lng: 150.644 }} />}
-                </GoogleMap>
-              </Td>
-            </Tr>
-          </Tbody>
-        </Table>
-      </CustomTileWithoutChart>
-    );
-  };
+          <TriangleDownIcon
+            lat={-34.397}
+            lng={150.644}
+            text="The Marker"
+            color="red"
+            fontSize="20px"
+          />
+        </GoogleMapReact>
+      </Box>
+    </CustomTileWithoutChart>
+  );
+};
 
-const LocationInformationWrappedWithGoogleMap =
-  withGoogleMap(LocationInformation);
-const LocationInformationWrappedWithScriptjs = withScriptjs(
-  LocationInformationWrappedWithGoogleMap
-);
-
-export default LocationInformationWrappedWithScriptjs;
+export default LocationInformation;

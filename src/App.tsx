@@ -92,8 +92,6 @@ function Pages() {
     }
   }, [inProgress, imageData]);
 
-  console.log(graphData);
-
   return (
     <>
       <Layout
