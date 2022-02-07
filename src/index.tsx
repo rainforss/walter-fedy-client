@@ -11,8 +11,8 @@ import reportWebVitals from "./reportWebVitals";
 import { msalConfig } from "./utils/authConfig";
 import { BrowserRouter as Router } from "react-router-dom";
 import "./index.css";
-import fetch from "unfetch";
-import { SWRConfig } from "swr";
+// import fetch from "unfetch";
+// import { SWRConfig } from "swr";
 
 export const msalInstance = new PublicClientApplication(msalConfig);
 

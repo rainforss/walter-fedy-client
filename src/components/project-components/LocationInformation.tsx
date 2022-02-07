@@ -1,4 +1,4 @@
-import { Box, Table, Tbody, Td, Tr } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 import * as React from "react";
 import GoogleMapReact from "google-map-react";
 import CustomTileWithoutChart from "../ui-components/CustomTileWithoutChart";
