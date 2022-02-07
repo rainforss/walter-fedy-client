@@ -3,7 +3,8 @@ import { Spinner } from "@chakra-ui/react";
 import * as React from "react";
 import ProjectCard from "../components/ProjectCard";
 import { PageWrapper } from "../components/ui-components/PageWrapper";
-import { useProjects } from "../hooks/useProjects";
+import { projects } from "../utils/constants";
+// import { useProjects } from "../hooks/useProjects";
 
 interface IMainProps {
   isSideBarOpen: boolean;
@@ -12,7 +13,7 @@ interface IMainProps {
 
 const Main: React.FunctionComponent<IMainProps> = React.memo(
   ({ isSideBarOpen, isSideBarHidden }) => {
-    const { projects, isError, isLoading } = useProjects(5, 0, true);
+    // const { projects, isError, isLoading } = useProjects(5, 0, true);
 
     return (
       <PageWrapper
@@ -20,7 +21,7 @@ const Main: React.FunctionComponent<IMainProps> = React.memo(
         isSidebarHidden={isSideBarHidden}
       >
         <Box>
-          {isLoading ? (
+          {/* {isLoading ? (
             <Center height="60vh">
               <Spinner
                 thickness="4px"
@@ -30,7 +31,7 @@ const Main: React.FunctionComponent<IMainProps> = React.memo(
                 size="xl"
               />
             </Center>
-          ) : null}
+          ) : null} */}
           {projects
             ? projects.map((p: any) => (
                 <ProjectCard key={p.projectNumber} project={p} />

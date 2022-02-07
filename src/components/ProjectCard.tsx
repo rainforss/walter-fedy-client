@@ -19,8 +19,7 @@ import QualityInformation from "./project-components/QualityInformation";
 import Risks from "./note-components/Risks";
 import Lessons from "./note-components/Lessons";
 import { CheckCircleIcon, InfoIcon, WarningIcon } from "@chakra-ui/icons";
-import { useProject } from "../hooks/useProject";
-import CustomTileWithoutChart from "./ui-components/CustomTileWithoutChart";
+
 interface IProjectCardProps {
   project: any;
 }

@@ -68,10 +68,10 @@ export const issues: Issue[] = [
 ];
 
 export const projects = [
-  { projectName: "Test Project", projectNumber: "0001" },
-  { projectName: "Test Project", projectNumber: "0002" },
-  { projectName: "Test Project", projectNumber: "0003" },
-  { projectName: "Test Project", projectNumber: "0004" },
+  { name: "Test Project", projectNumber: "0001" },
+  { name: "Test Project", projectNumber: "0002" },
+  { name: "Test Project", projectNumber: "0003" },
+  { name: "Test Project", projectNumber: "0004" },
 ];
 
 export const lessonsLearned: LessonLearned[] = [
