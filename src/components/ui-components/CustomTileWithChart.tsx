@@ -9,6 +9,7 @@ import {
   ModalCloseButton,
   ModalBody,
   ModalFooter,
+  Collapse,
 } from "@chakra-ui/react";
 import * as React from "react";
 import { threeIndicators, walterFedyBlue } from "../../utils/constants";
@@ -23,42 +24,46 @@ interface ICustomTileWithChartProps {
   status?: "red" | "orange" | "green";
 }
 
-const CustomTileWithChart: React.FunctionComponent<ICustomTileWithChartProps> =
-  ({ title, fields, chart, fullSizeChart, status }) => {
-    const { isOpen, onOpen, onClose } = useDisclosure();
-    return (
-      <>
+const CustomTileWithChart: React.FunctionComponent<
+  ICustomTileWithChartProps
+> = ({ title, fields, chart, fullSizeChart, status }) => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { isOpen: isTileOpen, onToggle: onTileToggle } = useDisclosure();
+  return (
+    <>
+      <Flex
+        width={{ base: "100%" }}
+        minW="80%"
+        direction="column"
+        justify="space-between"
+        border={`${walterFedyBlue} 2px solid`}
+        mt={4}
+      >
         <Flex
-          width={{ base: "100%" }}
-          minHeight="400px"
-          minW="80%"
-          direction="column"
+          height="50px"
+          bg="white"
           justify="space-between"
-          border={`${walterFedyBlue} 2px solid`}
-          mt={4}
+          align="center"
+          px={4}
+          borderBottom={`${walterFedyBlue} 2px solid`}
+          onClick={onTileToggle}
+          cursor="pointer"
         >
-          <Flex
-            height="50px"
-            bg="white"
-            justify="space-between"
-            align="center"
-            px={4}
-            borderBottom={`${walterFedyBlue} 2px solid`}
+          <Text
+            as="h3"
+            fontSize="1.2rem"
+            fontWeight="bold"
+            color={walterFedyBlue}
+            my="auto"
           >
-            <Text
-              as="h3"
-              fontSize="1.2rem"
-              fontWeight="bold"
-              color={walterFedyBlue}
-              my="auto"
-            >
-              {title}
-            </Text>
-            <Box w="100px">
-              <StatusIndicator indicators={threeIndicators} status={status} />
-            </Box>
-          </Flex>
+            {title}
+          </Text>
+          <Box w="100px">
+            <StatusIndicator indicators={threeIndicators} status={status} />
+          </Box>
+        </Flex>
 
+        <Collapse in={isTileOpen} animateOpacity>
           <Flex
             align="center"
             flexDirection={{ base: "column", xl: "row" }}
@@ -86,29 +91,30 @@ const CustomTileWithChart: React.FunctionComponent<ICustomTileWithChartProps> =
               </Center>
             )}
           </Flex>
-        </Flex>
-        <Modal isOpen={isOpen} onClose={onClose} size="full">
-          <ModalOverlay />
-          <ModalContent>
-            <ModalHeader>{title}</ModalHeader>
-            <ModalCloseButton />
-            <ModalBody mt={12}>
-              {fullSizeChart && (
-                <Box w="100%" h="75vh">
-                  {fullSizeChart}
-                </Box>
-              )}
-            </ModalBody>
+        </Collapse>
+      </Flex>
+      <Modal isOpen={isOpen} onClose={onClose} size="full">
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>{title}</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody mt={12}>
+            {fullSizeChart && (
+              <Box w="100%" h="75vh">
+                {fullSizeChart}
+              </Box>
+            )}
+          </ModalBody>
 
-            <ModalFooter>
-              <Button colorScheme="blue" mr={3} onClick={onClose}>
-                Close
-              </Button>
-            </ModalFooter>
-          </ModalContent>
-        </Modal>
-      </>
-    );
-  };
+          <ModalFooter>
+            <Button colorScheme="blue" mr={3} onClick={onClose}>
+              Close
+            </Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
+    </>
+  );
+};
 
 export default CustomTileWithChart;

@@ -27,6 +27,7 @@ msalInstance.addEventCallback((event: EventMessage) => {
     const payload = event.payload as AuthenticationResult;
     const account = payload.account;
     msalInstance.setActiveAccount(account);
+    console.log(account?.idTokenClaims);
   }
 });
 

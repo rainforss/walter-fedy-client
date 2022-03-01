@@ -115,7 +115,6 @@ const ProjectCard: React.FunctionComponent<IProjectCardProps> = ({
             <ClientInformation />
             <LocationInformation />
             <WfTeam />
-            <ProjectPerformance />
           </Flex>
           <Flex
             flexDirection="column"

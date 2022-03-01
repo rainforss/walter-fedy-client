@@ -15,7 +15,7 @@ const Lessons: React.FunctionComponent<ILessonsProps> = (props) => {
         align="stretch"
       >
         {lessonsLearned.map((l) => (
-          <Link href={l.link} fontSize="0.7rem">
+          <Link href={l.link} fontSize="0.7rem" key={l.link}>
             {l.topic} - {l.createdBy}
           </Link>
         ))}
